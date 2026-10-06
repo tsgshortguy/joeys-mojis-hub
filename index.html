@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joey's Mojis | Permanent Daily Link Hub</title>
+  <meta name="description" content="Permanent Daily Link Hub for Joey's Mojis. Never lose access to the latest unblocked games proxy.">
+  <link rel="icon" href="https://raw.githubusercontent.com/superjoeyandabby/assets/main/heart.png" id="tab-favicon">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      background: #080b12;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+    .hub-container {
+      width: 100%;
+      max-width: 720px;
+    }
+    .hub-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .logo-icon {
+      font-size: 28px;
+      filter: drop-shadow(0 0 10px rgba(255, 42, 68, 0.6));
+    }
+    .logo-text {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .logo-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ff2a44;
+      font-weight: 700;
+    }
+    .panic-btn {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .panic-btn:hover {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fff;
+    }
+    .panic-btn kbd {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+    }
+    .hub-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(9, 13, 22, 0.98) 100%);
+      border: 1px solid rgba(255, 42, 68, 0.35);
+      border-radius: 20px;
+      padding: 36px 30px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 42, 68, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .hub-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ff2a44, #ff5e36, #3b82f6);
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    h1 span {
+      background: linear-gradient(135deg, #ff2a44, #ff5e36);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.desc {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+    .link-box {
+      background: #060910;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .link-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+    .link-url {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      color: #38bdf8;
+      word-break: break-all;
+    }
+    .btn-copy {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f8fafc;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-copy:hover {
+      background: #334155;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-launch {
+      flex: 1;
+      min-width: 240px;
+      background: linear-gradient(135deg, #ff2a44 0%, #ff5e36 100%);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 15px 28px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(255, 42, 68, 0.45);
+      transition: all 0.2s;
+    }
+    .btn-launch:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 42, 68, 0.6);
+    }
+    .btn-refresh {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f8fafc;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 15px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-refresh:hover {
+      background: #334155;
+    }
+    .countdown-bar {
+      margin-top: 18px;
+      padding: 10px 16px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+    .countdown-bar button {
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      color: #f8fafc;
+      font-size: 11px;
+      padding: 3px 8px;
+      cursor: pointer;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #64748b;
+    }
+    .footer b {
+      color: #ff2a44;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hub-container">
+    
+    <div class="hub-header">
+      <a href="./" class="logo-group">
+        <span class="logo-icon">🫀</span>
+        <div>
+          <div class="logo-text">Joey's Mojis</div>
+          <div class="logo-tag">Permanent Link Hub</div>
+        </div>
+      </a>
+      <button class="panic-btn" id="panic-btn" title="Emergency escape to Google Classroom">
+        <span>Panic</span>
+        <kbd>ESC</kbd>
+      </button>
+    </div>
+
+    <div class="hub-card">
+      <div class="status-badge" id="status-badge">
+        <span class="status-dot"></span>
+        <span id="status-text">Today's Live Proxy Link</span>
+      </div>
+
+      <h1>Joey's Mojis <span>Daily Portal</span></h1>
+      <p class="desc">
+        Bookmark this permanent link! Whenever our game proxy link updates or restarts, today's active working link will automatically be waiting for you right here.
+      </p>
+
+      <div class="link-box">
+        <div>
+          <div class="link-label">Today's Live Link</div>
+          <div class="link-url" id="link-url">Fetching latest link...</div>
+        </div>
+        <button class="btn-copy" id="btn-copy">📋 Copy</button>
+      </div>
+
+      <div class="actions">
+        <a href="#" id="btn-launch" class="btn-launch">
+          <span>⚡ Enter Joey's Mojis</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <button class="btn-refresh" id="btn-refresh">🔄 Refresh</button>
+      </div>
+
+      <div class="countdown-bar" id="countdown-bar">
+        <span id="countdown-text">Auto-launching in <b id="countdown-sec">4</b>s...</span>
+        <button id="btn-cancel">Stay on Hub</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      Built by yours truly 🫀 · <b>Joey's Mojis</b> · Permanent Link Hub
+    </div>
+
+  </div>
+
+  <script>
+    // Panic Button - ESC or Click
+    function panic() {
+      window.location.replace("https://classroom.google.com");
+    }
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") panic();
+    });
+    document.getElementById("panic-btn").onclick = panic;
+
+    // Link state
+    let activeLink = "";
+    let countdown = 4;
+    let timer = null;
+    let cancelled = false;
+
+    async function loadLink() {
+      const urlEl = document.getElementById("link-url");
+      const launchBtn = document.getElementById("btn-launch");
+      const statusText = document.getElementById("status-text");
+
+      try {
+        const res = await fetch("./current_link.json?t=" + Date.now());
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+
+        if (data.link) {
+          activeLink = data.link;
+          urlEl.textContent = activeLink;
+          launchBtn.href = activeLink;
+          statusText.textContent = "Online · Ready to Play";
+          startCountdown();
+        } else {
+          urlEl.textContent = "Updating host link... Check back in a moment!";
+          statusText.textContent = "Host Updating";
+        }
+      } catch (err) {
+        urlEl.textContent = "Connecting to host... Please click refresh.";
+      }
+    }
+
+    function startCountdown() {
+      if (cancelled || !activeLink) return;
+      const secEl = document.getElementById("countdown-sec");
+
+      timer = setInterval(() => {
+        countdown--;
+        if (secEl) secEl.textContent = countdown;
+        if (countdown <= 0) {
+          clearInterval(timer);
+          if (activeLink && !cancelled) {
+            window.location.href = activeLink;
+          }
+        }
+      }, 1000);
+    }
+
+    document.getElementById("btn-cancel").onclick = () => {
+      cancelled = true;
+      clearInterval(timer);
+      const bar = document.getElementById("countdown-bar");
+      if (bar) bar.style.display = "none";
+    };
+
+    document.getElementById("btn-copy").onclick = () => {
+      if (activeLink) {
+        navigator.clipboard.writeText(activeLink);
+        alert("📋 Copied today's link to clipboard:\n" + activeLink);
+      }
+    };
+
+    document.getElementById("btn-refresh").onclick = () => {
+      loadLink();
+    };
+
+    loadLink();
+  </script>
+</body>
+</html>
