@@ -349,10 +349,20 @@
 
       if (!found) {
         try {
-          const res2 = await fetch("https://hub.glazesmp.org/current_link.json?t=" + Date.now());
+          const res2 = await fetch("https://hub2.glazesmp.org/current_link.json?t=" + Date.now());
           if (res2.ok) {
             const data2 = await res2.json();
             if (data2.link) found = data2.link;
+          }
+        } catch (_) {}
+      }
+
+      if (!found) {
+        try {
+          const res3 = await fetch("https://raw.githubusercontent.com/tsgshortguy/joeys-mojis-hub/main/current_link.json?t=" + Date.now());
+          if (res3.ok) {
+            const data3 = await res3.json();
+            if (data3.link) found = data3.link;
           }
         } catch (_) {}
       }
