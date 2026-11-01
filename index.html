@@ -3,319 +3,690 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joey's Mojis | Permanent Daily Link Hub</title>
-  <meta name="description" content="Permanent Daily Link Hub for Joey's Mojis. Never lose access to the latest unblocked games proxy.">
-  <link rel="icon" href="https://raw.githubusercontent.com/superjoeyandabby/assets/main/heart.png" id="tab-favicon">
+  <title>joey luvs u &lt;3 | Permanent Daily Link Hub</title>
+  <meta name="description" content="Permanent Daily Link Hub for joey luvs u <3. Never lose access to the latest unblocked games proxy.">
+  <link rel="icon" type="image/png" href="./assets/logo.png" id="tab-favicon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
+    :root {
+      --primary-accent: #f97316;
+      --primary-accent-hover: #ea580c;
+      --primary-glow: rgba(249, 115, 22, 0.4);
+      --bg-glass: rgba(10, 16, 32, 0.78);
+      --border-glass: rgba(249, 115, 22, 0.32);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
     body {
       min-height: 100vh;
-      background: #080b12;
-      color: #f8fafc;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #060a15;
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
+      position: relative;
+      overflow-x: hidden;
+      padding: 0;
     }
-    .hub-container {
+
+    /* Winter campfire canvas spans entire background */
+    #winter-campfire-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      display: block;
+    }
+
+    /* Page Content Wrapper */
+    .page-wrapper {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
       width: 100%;
-      max-width: 720px;
+      padding: 20px 24px 36px;
     }
+
+    /* Header Nav */
     .hub-header {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 24px;
+      padding: 12px 20px;
+      background: rgba(10, 16, 32, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
+
     .logo-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
       color: #fff;
     }
-    .logo-icon {
-      font-size: 28px;
-      filter: drop-shadow(0 0 10px rgba(255, 42, 68, 0.6));
+
+    .logo-img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.6));
+      transition: transform 0.25s ease;
     }
+
+    .logo-group:hover .logo-img {
+      transform: scale(1.08) rotate(-4deg);
+    }
+
     .logo-text {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
       letter-spacing: -0.5px;
+      color: #fff;
     }
+
     .logo-tag {
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #ff2a44;
+      letter-spacing: 1.2px;
+      color: #f97316;
       font-weight: 700;
+      margin-top: -2px;
     }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #34d399;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulseGlow 1.8s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.5; }
+    }
+
     .panic-btn {
       background: rgba(239, 68, 68, 0.15);
       border: 1px solid rgba(239, 68, 68, 0.4);
       color: #fca5a5;
       font-size: 12px;
       font-weight: 700;
-      padding: 8px 14px;
-      border-radius: 8px;
+      padding: 7px 14px;
+      border-radius: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
       transition: all 0.2s;
     }
+
     .panic-btn:hover {
-      background: rgba(239, 68, 68, 0.3);
+      background: rgba(239, 68, 68, 0.35);
       color: #fff;
+      transform: translateY(-1px);
     }
+
     .panic-btn kbd {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 2px 6px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1px 6px;
       border-radius: 4px;
       font-size: 10px;
+      font-family: monospace;
     }
-    .hub-card {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(9, 13, 22, 0.98) 100%);
-      border: 1px solid rgba(255, 42, 68, 0.35);
-      border-radius: 20px;
-      padding: 36px 30px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 42, 68, 0.15);
+
+    /* Main Hub Container */
+    .hub-main {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Hero Card (Wide, Spacious, Frosted Glass) */
+    .hub-hero-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 28px;
+      padding: 44px 48px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), 0 0 50px rgba(249, 115, 22, 0.12);
       position: relative;
       overflow: hidden;
     }
-    .hub-card::before {
+
+    /* Campfire Fire Ribbon Top Accent */
+    .hub-hero-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, #ff2a44, #ff5e36, #3b82f6);
+      background: linear-gradient(90deg, #f97316 0%, #fbbf24 45%, #ef4444 100%);
+      box-shadow: 0 0 15px rgba(249, 115, 22, 0.8);
     }
-    .status-badge {
+
+    .hero-chip {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
+      gap: 7px;
+      background: rgba(249, 115, 22, 0.14);
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      color: #fdba74;
       font-size: 11px;
       font-weight: 700;
-      padding: 4px 12px;
+      padding: 5px 14px;
       border-radius: 999px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 16px;
+      letter-spacing: 0.8px;
+      margin-bottom: 18px;
     }
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #10b981;
-      animation: pulse 1.5s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
-    }
-    h1 {
-      font-size: 32px;
+
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
       color: #fff;
+      line-height: 1.15;
     }
-    h1 span {
-      background: linear-gradient(135deg, #ff2a44, #ff5e36);
+
+    .hero-title span {
+      background: linear-gradient(135deg, #f97316 0%, #fbbf24 60%, #ef4444 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 35px rgba(249, 115, 22, 0.35);
     }
-    p.desc {
-      color: #94a3b8;
-      font-size: 14px;
+
+    .hero-desc {
+      color: #cbd5e1;
+      font-size: 1.05rem;
       line-height: 1.6;
-      margin-bottom: 26px;
+      max-width: 720px;
+      margin-bottom: 32px;
     }
-    .link-box {
-      background: #060910;
+
+    /* Live Link Panel */
+    .link-showcase-panel {
+      background: rgba(6, 10, 20, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
-      padding: 14px 18px;
+      border-radius: 18px;
+      padding: 20px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 18px;
       flex-wrap: wrap;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.2s ease;
     }
+
+    .link-showcase-panel:hover {
+      border-color: rgba(249, 115, 22, 0.4);
+    }
+
+    .link-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .link-header-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .link-label {
       font-size: 11px;
       text-transform: uppercase;
-      font-weight: 700;
-      color: #94a3b8;
-      margin-bottom: 4px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #f97316;
     }
-    .link-url {
-      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+    .verified-badge {
+      font-size: 10px;
+      color: #34d399;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.15);
+      padding: 1px 8px;
+      border-radius: 6px;
+    }
+
+    .link-url-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ssl-lock {
+      color: #10b981;
       font-size: 14px;
+    }
+
+    .link-url-text {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 15px;
+      font-weight: 600;
       color: #38bdf8;
       word-break: break-all;
     }
-    .btn-copy {
-      background: #1e293b;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+
+    .copy-link-btn {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       color: #f8fafc;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 13px;
-      padding: 10px 16px;
-      border-radius: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: all 0.2s;
+      white-space: nowrap;
     }
-    .btn-copy:hover {
-      background: #334155;
+
+    .copy-link-btn:hover {
+      background: rgba(51, 65, 85, 1);
+      border-color: rgba(249, 115, 22, 0.5);
+      transform: translateY(-1px);
     }
-    .actions {
+
+    /* Actions Row */
+    .actions-row {
       display: flex;
-      gap: 12px;
+      align-items: center;
+      gap: 16px;
       flex-wrap: wrap;
     }
-    .btn-launch {
-      flex: 1;
-      min-width: 240px;
-      background: linear-gradient(135deg, #ff2a44 0%, #ff5e36 100%);
-      color: #fff;
+
+    .btn-launch-primary {
+      flex: 2;
+      min-width: 260px;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: #ffffff;
       text-decoration: none;
       font-weight: 800;
       font-size: 16px;
-      padding: 15px 28px;
-      border-radius: 12px;
+      letter-spacing: 0.3px;
+      padding: 18px 32px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      box-shadow: 0 6px 20px rgba(255, 42, 68, 0.45);
-      transition: all 0.2s;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(249, 115, 22, 0.45);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
-    .btn-launch:hover {
+
+    .btn-launch-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(255, 42, 68, 0.6);
+      box-shadow: 0 14px 40px rgba(249, 115, 22, 0.65);
+      background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
     }
-    .btn-refresh {
-      background: #1e293b;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+
+    .btn-launch-primary svg {
+      transition: transform 0.2s ease;
+    }
+
+    .btn-launch-primary:hover svg {
+      transform: translateX(4px);
+    }
+
+    .btn-refresh-hub {
+      flex: 1;
+      min-width: 170px;
+      background: rgba(30, 41, 59, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       color: #f8fafc;
-      font-weight: 600;
-      font-size: 13px;
-      padding: 15px 20px;
-      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 18px 24px;
+      border-radius: 16px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      gap: 8px;
       transition: all 0.2s;
     }
-    .btn-refresh:hover {
-      background: #334155;
+
+    .btn-refresh-hub:hover {
+      background: rgba(51, 65, 85, 0.95);
+      border-color: rgba(249, 115, 22, 0.45);
+      transform: translateY(-1px);
     }
-    .countdown-bar {
-      margin-top: 18px;
-      padding: 10px 16px;
+
+    /* Auto Launch Countdown Bar */
+    .countdown-wrapper {
+      margin-top: 24px;
+      padding: 14px 20px;
       background: rgba(16, 185, 129, 0.08);
       border: 1px solid rgba(16, 185, 129, 0.25);
-      border-radius: 10px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 12px;
-      color: #cbd5e1;
+      gap: 14px;
+      font-size: 13px;
+      color: #e2e8f0;
+      flex-wrap: wrap;
     }
-    .countdown-bar button {
-      background: none;
+
+    .countdown-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .countdown-track {
+      width: 120px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .countdown-fill {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #f97316);
+      border-radius: 999px;
+      transition: width 1s linear;
+    }
+
+    .btn-cancel-countdown {
+      background: rgba(0, 0, 0, 0.35);
       border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 6px;
+      border-radius: 8px;
       color: #f8fafc;
-      font-size: 11px;
-      padding: 3px 8px;
-      cursor: pointer;
-    }
-    .footer {
-      text-align: center;
-      margin-top: 24px;
       font-size: 12px;
-      color: #64748b;
+      font-weight: 600;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all 0.15s;
     }
-    .footer b {
-      color: #ff2a44;
+
+    .btn-cancel-countdown:hover {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: rgba(239, 68, 68, 0.5);
+    }
+
+    /* Feature Grid (Rich 4-column overview) */
+    .hub-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      width: 100%;
+    }
+
+    .feature-card {
+      background: rgba(10, 16, 32, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      padding: 22px 20px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(249, 115, 22, 0.35);
+    }
+
+    .feature-icon {
+      font-size: 26px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .feature-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 6px;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #94a3b8;
+    }
+
+    /* Footer */
+    .hub-footer {
+      width: 100%;
+      max-width: 1080px;
+      margin: 32px auto 0;
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hub-footer b {
+      color: #f97316;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-wrapper {
+        padding: 14px 14px 28px;
+      }
+      .hub-hero-card {
+        padding: 28px 20px;
+        border-radius: 20px;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .link-showcase-panel {
+        padding: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .copy-link-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .actions-row {
+        flex-direction: column;
+      }
+      .btn-launch-primary,
+      .btn-refresh-hub {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="hub-container">
+  <div class="page-wrapper">
     
-    <div class="hub-header">
+    <!-- Top Nav Header -->
+    <header class="hub-header">
       <a href="./" class="logo-group">
-        <span class="logo-icon">🫀</span>
+        <img src="./assets/logo.png" class="logo-img" alt="joey luvs u <3">
         <div>
-          <div class="logo-text">Joey's Mojis</div>
+          <div class="logo-text">joey luvs u &lt;3</div>
           <div class="logo-tag">Permanent Link Hub</div>
         </div>
       </a>
-      <button class="panic-btn" id="panic-btn" title="Emergency escape to Google Classroom">
-        <span>Panic</span>
-        <kbd>ESC</kbd>
-      </button>
-    </div>
-
-    <div class="hub-card">
-      <div class="status-badge" id="status-badge">
-        <span class="status-dot"></span>
-        <span id="status-text">Today's Live Proxy Link</span>
-      </div>
-
-      <h1>Joey's Mojis <span>Daily Portal</span></h1>
-      <p class="desc">
-        Bookmark this permanent link! Whenever our game proxy link updates or restarts, today's active working link will automatically be waiting for you right here.
-      </p>
-
-      <div class="link-box">
-        <div>
-          <div class="link-label">Today's Live Link</div>
-          <div class="link-url" id="link-url">Fetching latest link...</div>
+      
+      <div class="header-actions">
+        <div class="live-indicator">
+          <span class="pulse-dot"></span>
+          <span>Online</span>
         </div>
-        <button class="btn-copy" id="btn-copy">📋 Copy</button>
+        <button class="panic-btn" id="panic-btn" title="Emergency escape to Google Classroom">
+          <span>Panic</span>
+          <kbd>ESC</kbd>
+        </button>
       </div>
+    </header>
 
-      <div class="actions">
-        <a href="#" id="btn-launch" class="btn-launch">
-          <span>⚡ Enter Joey's Mojis</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-        <button class="btn-refresh" id="btn-refresh">🔄 Refresh</button>
-      </div>
+    <!-- Main Content -->
+    <main class="hub-main">
+      
+      <section class="hub-hero-card">
+        <div class="hero-chip">
+          <span>❄️</span>
+          <span>Peaceful Winter Portal · Daily Link Hub</span>
+        </div>
 
-      <div class="countdown-bar" id="countdown-bar">
-        <span id="countdown-text">Auto-launching in <b id="countdown-sec">4</b>s...</span>
-        <button id="btn-cancel">Stay on Hub</button>
-      </div>
-    </div>
+        <h1 class="hero-title">
+          joey luvs u <span>&lt;3</span>
+        </h1>
 
-    <div class="footer">
-      Built by yours truly 🫀 · <b>Joey's Mojis</b> · Permanent Link Hub
-    </div>
+        <p class="hero-desc">
+          Bookmark this permanent hub! Whenever our school unblocker links rotate or restart, today's live working proxy link is automatically updated right here with zero downtime.
+        </p>
+
+        <!-- Live Link Box -->
+        <div class="link-showcase-panel">
+          <div class="link-meta">
+            <div class="link-header-row">
+              <span class="link-label">Today's Active Unblocker Link</span>
+              <span class="verified-badge" id="status-badge">● Online &amp; Working</span>
+            </div>
+            <div class="link-url-box">
+              <span class="ssl-lock">🔒</span>
+              <span class="link-url-text" id="link-url">Checking live unblocker link...</span>
+            </div>
+          </div>
+          <button class="copy-link-btn" id="btn-copy">
+            <span>📋</span>
+            <span id="copy-text">Copy Link</span>
+          </button>
+        </div>
+
+        <!-- Action Row -->
+        <div class="actions-row">
+          <a href="#" id="btn-launch" class="btn-launch-primary">
+            <span>⚡ Enter joey luvs u &lt;3</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <button class="btn-refresh-hub" id="btn-refresh">
+            <span>🔄</span>
+            <span>Check Updates</span>
+          </button>
+        </div>
+
+        <!-- Auto Launch Countdown -->
+        <div class="countdown-wrapper" id="countdown-bar">
+          <div class="countdown-info">
+            <span>⏳</span>
+            <span id="countdown-text">Auto-launching in <b id="countdown-sec">4</b>s...</span>
+            <div class="countdown-track">
+              <div class="countdown-fill" id="countdown-fill"></div>
+            </div>
+          </div>
+          <button class="btn-cancel-countdown" id="btn-cancel">Stay on Hub</button>
+        </div>
+      </section>
+
+      <!-- Feature Grid (Expands page layout so it never looks like a small box) -->
+      <section class="hub-feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎮</div>
+          <div class="feature-title">100+ Unblocked Games</div>
+          <div class="feature-desc">Play Capybara Clicker, Cookie Clicker, Rocket Pult, Sand Spiel, Drive Mad, and dozens of school-favorite games.</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Encrypted Proxy Browser</div>
+          <div class="feature-desc">Ultra-fast Ultraviolet proxy unblocks Discord, YouTube, Roblox, TikTok, and any web address with zero restrictions.</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">☁️</div>
+          <div class="feature-title">Account Cloud Saves</div>
+          <div class="feature-desc">Sign in with your nickname and PIN to keep your game saves synced across all link rotations and classroom PCs.</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-title">Stealth &amp; Panic Mode</div>
+          <div class="feature-desc">Press ESC anytime for an instant disguise cloak redirecting your browser tab to Google Classroom or IXL.</div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="hub-footer">
+      <div>made with love · <b>joey luvs u &lt;3</b> · Permanent Daily Unblocker Hub</div>
+      <div style="font-size: 11px; opacity: 0.65;">Powered by Cloudflare Tunnels &amp; GitHub Pages</div>
+    </footer>
 
   </div>
+
+  <!-- Animated Winter Campfire Engine -->
+  <script src="./winter-campfire.js"></script>
 
   <script>
     // Panic Button - ESC or Click
@@ -330,13 +701,14 @@
     // Link state
     let activeLink = "";
     let countdown = 4;
+    const initialCountdown = 4;
     let timer = null;
     let cancelled = false;
 
     async function loadLink() {
       const urlEl = document.getElementById("link-url");
       const launchBtn = document.getElementById("btn-launch");
-      const statusText = document.getElementById("status-text");
+      const statusBadge = document.getElementById("status-badge");
 
       let found = "";
       let foundTime = 0;
@@ -364,12 +736,14 @@
         activeLink = found;
         urlEl.textContent = activeLink;
         launchBtn.href = activeLink;
-        statusText.textContent = "Online · Ready to Play";
+        statusBadge.textContent = "● Online & Verified";
+        statusBadge.style.color = "#34d399";
         startCountdown();
         return true;
       } else {
         urlEl.textContent = "Updating host link... Check back in a moment!";
-        statusText.textContent = "Host Updating";
+        statusBadge.textContent = "● Updating...";
+        statusBadge.style.color = "#fbbf24";
         return false;
       }
     }
@@ -377,10 +751,16 @@
     function startCountdown() {
       if (cancelled || !activeLink) return;
       const secEl = document.getElementById("countdown-sec");
+      const fillEl = document.getElementById("countdown-fill");
 
+      if (timer) clearInterval(timer);
       timer = setInterval(() => {
         countdown--;
         if (secEl) secEl.textContent = countdown;
+        if (fillEl) {
+          const pct = Math.max(0, (countdown / initialCountdown) * 100);
+          fillEl.style.width = pct + "%";
+        }
         if (countdown <= 0) {
           clearInterval(timer);
           if (activeLink && !cancelled) {
@@ -392,7 +772,7 @@
 
     document.getElementById("btn-cancel").onclick = () => {
       cancelled = true;
-      clearInterval(timer);
+      if (timer) clearInterval(timer);
       const bar = document.getElementById("countdown-bar");
       if (bar) bar.style.display = "none";
     };
@@ -400,7 +780,10 @@
     document.getElementById("btn-copy").onclick = () => {
       if (activeLink) {
         navigator.clipboard.writeText(activeLink);
-        alert("📋 Copied today's link to clipboard:\n" + activeLink);
+        const copyText = document.getElementById("copy-text");
+        const orig = copyText.textContent;
+        copyText.textContent = "Copied! ✓";
+        setTimeout(() => copyText.textContent = orig, 1800);
       }
     };
 
@@ -408,13 +791,13 @@
     if (refreshBtn) {
       refreshBtn.onclick = async () => {
         const orig = refreshBtn.innerHTML;
-        refreshBtn.innerHTML = "⏳ Updating...";
+        refreshBtn.innerHTML = "<span>⏳</span><span>Checking...</span>";
         refreshBtn.disabled = true;
         const ok = await loadLink();
         if (ok) {
-          refreshBtn.innerHTML = "✅ Updated!";
+          refreshBtn.innerHTML = "<span>✅</span><span>Updated!</span>";
         } else {
-          refreshBtn.innerHTML = "⚠️ Try Again";
+          refreshBtn.innerHTML = "<span>⚠️</span><span>Try Again</span>";
         }
         setTimeout(() => {
           refreshBtn.innerHTML = orig;
@@ -427,5 +810,3 @@
   </script>
 </body>
 </html>
-
-
