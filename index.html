@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -339,30 +339,23 @@
       const statusText = document.getElementById("status-text");
 
       let found = "";
-      try {
-        const res = await fetch("./current_link.json?t=" + Date.now());
-        if (res.ok) {
-          const data = await res.json();
-          if (data.link) found = data.link;
-        }
-      } catch (_) {}
+      let foundTime = 0;
 
-      if (!found) {
-        try {
-          const res2 = await fetch("https://hub5.glazesmp.org/current_link.json?t=" + Date.now());
-          if (res2.ok) {
-            const data2 = await res2.json();
-            if (data2.link) found = data2.link;
-          }
-        } catch (_) {}
-      }
+      const sources = [
+        "https://raw.githubusercontent.com/tsgshortguy/joeys-mojis-hub/main/current_link.json?t=" + Date.now(),
+        "./current_link.json?t=" + Date.now()
+      ];
 
-      if (!found) {
+      for (const src of sources) {
         try {
-          const res3 = await fetch("https://raw.githubusercontent.com/tsgshortguy/joeys-mojis-hub/main/current_link.json?t=" + Date.now());
-          if (res3.ok) {
-            const data3 = await res3.json();
-            if (data3.link) found = data3.link;
+          const res = await fetch(src, { cache: "no-store" });
+          if (res.ok) {
+            const data = await res.json();
+            const time = data.updatedAt || 0;
+            if (data.link && (!found || time > foundTime)) {
+              found = data.link;
+              foundTime = time;
+            }
           }
         } catch (_) {}
       }
